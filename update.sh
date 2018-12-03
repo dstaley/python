@@ -113,7 +113,7 @@ for version in "${versions[@]}"; do
 
 	for v in \
 		alpine{3.6,3.7,3.8} \
-		{wheezy,jessie,stretch}{/slim,} \
+		{wheezy,jessie,stretch,buster}{/slim,} \
 		windows/nanoserver-{1709,sac2016} \
 		windows/windowsservercore-{1709,ltsc2016} \
 	; do
@@ -193,7 +193,7 @@ for version in "${versions[@]}"; do
 				# older Python needs older OpenSSL
 				sed -ri -e 's/libssl-dev/libssl1.0-dev/g' "$dir/Dockerfile"
 				;;
-			*/stretch | */jessie | */wheezy)
+			*/buster | */stretch | */jessie | */wheezy)
 				# buildpack-deps already includes libssl-dev
 				sed -ri -e '/libssl-dev/d' "$dir/Dockerfile"
 				;;
